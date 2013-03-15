@@ -11,7 +11,7 @@ Also any help would be appreciated.
 Example
 -------
 
-``
+```php
 <?php
 
 //Connect to a Sharepoint site
@@ -27,7 +27,7 @@ $libraryItems = $sp->getListItems('{<listGuid>}');
 $data = $sp->getFile('http//example.sharepoint.site/sites/Test/DocumentLibrary/example.txt');
 
 //etc...
-``
+```
 
 Note
 ----
