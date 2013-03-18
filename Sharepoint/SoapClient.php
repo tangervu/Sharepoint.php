@@ -26,6 +26,16 @@ class SoapClient extends \SoapClient {
 	}
 	
 	public function __doRequest($request, $location, $action, $version) {
+		//Bugfix: at some point inside the SoapClient the $location has been urldecoded, special chars (like ä, ö) need to be encoded
+		$location = urldecode($location); //In case some versions of php work differently...
+		$location = urlencode($location);
+		$location = str_ireplace('%2f','/',$location);
+		$location = str_ireplace('%3d','=',$location);
+		$location = str_ireplace('%3f','?',$location);
+		$location = str_ireplace('%26','&',$location);
+		$location = str_ireplace('%3a',':',$location);
+		
+		//Build the request url
 		$url = parse_url($location);
 		$item = $url['path'];
 		if(isset($url['query'])) {
