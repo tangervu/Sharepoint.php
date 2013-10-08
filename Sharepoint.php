@@ -11,6 +11,7 @@
  * @note SoapClient/cURL seem to have some issues with NTLM authentication. This class tries to circumvent those.
  * 
  * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
 require_once(dirname(__FILE__) . '/Sharepoint/Exception.php');

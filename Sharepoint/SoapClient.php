@@ -1,6 +1,9 @@
 <?php
 /**
  * SoapClient object tuned to work with NTLM authentication
+ * 
+ * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
 namespace Sharepoint;
@@ -27,6 +30,8 @@ class SoapClient extends \SoapClient {
 	
 	public function __doRequest($request, $location, $action, $version) {
 		$url = parse_url($location);
+		$path = $url['path']; //FIXME ääkkösiä sisältävät osoitteet menevät tässä rikki, pitää urlenkoodata...
+		
 		$item = $url['path'];
 		if(isset($url['query'])) {
 			$item .= '?' . $url['query'];

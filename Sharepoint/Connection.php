@@ -5,6 +5,9 @@
  * For some reason Curl couldn't handle NTLM authentication...
  * 
  * Modified the code from http://forums.fedoraforum.org/showthread.php?t=230535
+ * 
+ * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
 namespace Sharepoint;

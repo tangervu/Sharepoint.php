@@ -29,6 +29,6 @@ $data = $sp->getFile('http//example.sharepoint.site/sites/Test/DocumentLibrary/e
 //etc...
 ```
 
-Note
-----
-Renamed project from ShareSoap to Sharepoint.php
+License
+-------
+LGPL v3
