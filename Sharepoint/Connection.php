@@ -367,7 +367,12 @@ class Connection {
 		if (!$this->msg3) {
 			//Handel the server Type 2 Message
 			$msg2 = base64_decode($ntlm_response);
-			$headers = unpack('a8ID/Vtype/vtarget_length/vtarget_space/Vtarget_offset/Vflags/a8challenge/a8context/vtargetinfo_length/vtargetinfo_space/Vtargetinfo_offset/cOS_major/cOS_minor/vOS_build', $msg2);
+			if (version_compare(phpversion(), '5.5.0', '<')) {
+				$format = 'a8ID/Vtype/vtarget_length/vtarget_space/Vtarget_offset/Vflags/a8challenge/a8context/vtargetinfo_length/vtargetinfo_space/Vtargetinfo_offset/cOS_major/cOS_minor/vOS_build';
+			} else {
+				$format = 'A8ID/Vtype/vtarget_length/vtarget_space/Vtarget_offset/Vflags/A8challenge/A8context/vtargetinfo_length/vtargetinfo_space/Vtargetinfo_offset/cOS_major/cOS_minor/vOS_build';
+			}
+			$headers = unpack($format, $msg2);
 			if ($headers['ID'] != 'NTLMSSP') {
 				throw new ConnectionException('Incorrect NTLM Type 2 Message');
 				return false;
